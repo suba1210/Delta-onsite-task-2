@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<style>
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+
+
+</style>
+
+
+
+
+<body>
+
+    <h2>URL SHORTENER</h2>
+    
+    <form action='/shorten' method='POST'>
+
+        <label for='url'> URL </label>
+        <input type='text' id='url' name='long' required>
+
+        <br><br><br><br>
+
+        <button>Submit</button>
+
+    </form>
+
+    <br><br>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>LONG URL</th>
+                <th>SHORT URL </th>
+                <th>CLICKS </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(url of urls){ %>
+                
+                <tr>
+                    <td><a href="<%=url.long%>"><%=url.long%></a></td>
+                    <td><a href="<%=url.short%>"><%=url.short%> </a></td>
+                    <td><%=url.clicks%></td>
+                </tr>
+
+            <% } %> 
+
+
+
+
+        </tbody>
+
+
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
