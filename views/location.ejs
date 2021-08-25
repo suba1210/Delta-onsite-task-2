@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+table{
+    max-width: fit-content;
+    width:100%;
+    margin:0 auto;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,td{
+    padding:20px;
+    text-align: center;
+}
+    BODY{
+    background-color: rgb(234, 245, 195);
+    }
+    
+    
+    
+</style>
+
+
+
+
+<body>
+
+    <br><br>
+
+    <h3 style='text-align: center;'> Locations on which <a href="http://localhost:3000/<%=url.short%>" target='_blank'>http://localhost:3000/<%=url.short%></a> is clicked </h3>
+
+    <br><br>
+
+    <% let result = {} %> 
+
+    <% for(let i=0;i<continents.length;i++){ %>
+        
+        <% if(!result[continents[i]]){ %>
+            
+            <% result[continents[i]]=0; %> 
+
+        <% } %> 
+
+        <% ++result[continents[i]] %> 
+
+    <% } %> 
+    
+
+    <table>
+        <thead>
+            <tr>
+                <th>CONTINENT</th>
+                <th>CLICKS </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for (const key in result ){ %>
+                
+                <tr>
+
+                    <td><%=key%> </td>
+                    <td><%=result[key]%></td>
+                </tr>
+
+            <% } %> 
+
+            
+
+
+        </tbody>
+
+    </table>
+
+    <br><br>
+
+    <p style='text-align: center;'><a  href='http://localhost:3000/'>Back to home page</a></p>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

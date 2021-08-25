@@ -15,7 +15,10 @@ const urlSchema = new Schema({
     clicks : {
         type : Number,
         default :0
-    }
+    },
+    continent : [{
+        type : String
+    }]
 
 
 },{

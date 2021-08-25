@@ -8,13 +8,43 @@
 
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <style>
+
+table{
+    max-width: fit-content;
+    width:100%;
+    margin:0 auto;
+}
 
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
-
+th,td{
+    padding:20px;
+    text-align: center;
+}
+BODY{
+    background-color: rgb(234, 245, 195);
+}
+.center{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    width:500px;
+    padding:8px;
+}
 
 
 </style>
@@ -24,20 +54,61 @@ table, th, td {
 
 <body>
 
+    <div class='center'>
+
     <h2>URL SHORTENER</h2>
     
     <form action='/shorten' method='POST'>
 
-        <label for='url'> URL </label>
+        <label for='url'> URL :  </label>
+        <br><br>
+
         <input type='text' id='url' name='long' required>
 
-        <br><br><br><br>
+        <br>
 
-        <button>Submit</button>
+        <button>Shorten</button>
 
     </form>
 
+    </div>
+
     <br><br>
+
+
+    <% if(urls.length!=0){ %> 
+
+    <h3 style='text-align: center;'>Your Latest Converted Url</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>LONG URL</th>
+                <th>SHORT URL </th>
+                <th>CLICKS </th>
+                <th>TRACK LOCATION</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% let i = urls.length-1 %>
+                
+                <tr>
+                    <td><a href="<%=urls[i].long%>" target='_blank'><%=urls[i].long%></a></td>
+                    <td><a href="<%=urls[i].short%>"  target='_blank'  >http://localhost:3000/<%=urls[i].short%> </a></td>
+                    <td><%=urls[i].clicks%></td>
+                    <td><a href='/location/<%=urls[i]._id%>'>Location statics</a></td>
+                </tr>
+
+        </tbody>
+
+    </table>
+
+    
+
+    <br><br>
+
+    <h3 style='text-align: center;'>All your Urls</h3>
 
 
     <table>
@@ -46,16 +117,18 @@ table, th, td {
                 <th>LONG URL</th>
                 <th>SHORT URL </th>
                 <th>CLICKS </th>
+                <th>TRACK LOCATION</th>
             </tr>
         </thead>
         <tbody>
 
-            <% for(url of urls){ %>
+            <% for(let i = urls.length-1 ; i>=0;i--){ %>
                 
                 <tr>
-                    <td><a href="<%=url.long%>"><%=url.long%></a></td>
-                    <td><a href="<%=url.short%>"><%=url.short%> </a></td>
-                    <td><%=url.clicks%></td>
+                    <td><a href="<%=urls[i].long%>"><%=urls[i].long%></a></td>
+                    <td><a href="<%=urls[i].short%>"  target='_blank'  >http://localhost:3000/<%=urls[i].short%> </a></td>
+                    <td><%=urls[i].clicks%></td>
+                    <td><a href='/location/<%=urls[i]._id%>'>Location statics</a></td>
                 </tr>
 
             <% } %> 
@@ -65,16 +138,14 @@ table, th, td {
 
         </tbody>
 
-
-
-
-
     </table>
 
+    <% } %> 
 
 
 
 
+    <br><br>
 
 
 
