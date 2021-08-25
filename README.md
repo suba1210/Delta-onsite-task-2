@@ -1,5 +1,15 @@
 # Delta-onsite-task-2
 
+Getting Started : 
+
+npm install 
+
+npm start 
+
+or,
+
+node app.js
+
 Features to implement:
 1) Unique short URLs that will redirect to the provided URL.
 2) Track the number of times the short URL has been clicked on.
