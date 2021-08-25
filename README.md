@@ -2,13 +2,9 @@
 
 Getting Started : 
 
-npm install 
+1) npm install 
 
-npm start 
-
-or,
-
-node app.js
+2) npm start or, node app.js
 
 Features to implement:
 1) Unique short URLs that will redirect to the provided URL.
